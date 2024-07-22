@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+    />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% block head %}
+    <!-- Head content here -->
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+          <div class="logo-img">
+            <img
+              src="{{ url_for('static', filename='img/logo.png') }}"
+              alt="Logo"
+            />
+          </div>
+          <span>KeyMG</span>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/discover">Discover</a></li>
+          <li><a href="/community">Community</a></li>
+          <li><a href="/about-us">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="user-section">
+        {% if user.is_authenticated %}
+        <div class="user-profile">
+          <span>{{ user.username }}</span>
+          <div class="profile-img">
+            <img src="{{ user.url }}" alt="Profile Image" />
+          </div>
+        </div>
+        {% else %}
+        <div class="auth-buttons">
+          <a href="#">Sign Up</a>
+          <a href="#" class="login">Login</a>
+        </div>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="body-content">
+      {% block body %}
+      <!-- Body content here -->
+      {% endblock %}
+    </div>
+    <footer>
+      <div class="footer-columns">
+        <div class="footer-column footer-column-large">
+          <h4>KeyMG</h4>
+          <p>
+            Our goal is to assist users in creating personalized playlists based
+            on harmonic recommendations, utilizing the key and BPM (beats per
+            minute) of songs.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/discover">Discover</a></li>
+            <li><a href="/community">Community</a></li>
+            <li><a href="/about-us">About us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">keymg@gmail.com</a></li>
+            <li><a href="#">+051 945 673 421</a></li>
+            <li><a href="#">Leonardo Da Vinci 249 Oficina 10</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Social Media</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <span>Key MG © 2023 Copyright</span>
+    </footer>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>

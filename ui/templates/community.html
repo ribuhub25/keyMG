@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block head %}
+<title>Community</title>
+{% endblock %} {% block body %}
+<section class="banner-community">
+  <div class="background"></div>
+  <div class="content">
+    <h2>Do you need inspiration?</h2>
+    <h1>Navigate in our Community</h1>
+  </div>
+</section>
+<section id="playlist-container" class="trending">
+  <h2>Trending right now!</h2>
+</section>
+<div class="new-playlist">
+  <div id="spotify" class="hidden">Using Spotify Playlist</div>
+  <div id="discover" class="hidden"><a href="/discover">Using our app</a></div>
+  <div id="plus" class="plus-button">
+    <img
+      src="{{ url_for('static', filename='img/plus.svg') }}"
+      alt="New playlist"
+    />
+  </div>
+</div>
+<div id="spotifyModal" class="modal">
+  <div class="modal-content">
+    <div class="title">
+      <h2>Add a playlist from Spotify</h2>
+      <span class="close">&times;</span>
+    </div>
+    <div class="search">
+      <input
+        type="url"
+        name="playlist"
+        id="playlist"
+        placeholder="Introduce your link to an spotify playlist"
+      />
+    </div>
+    <div class="buttons">
+      <div id="btnCancel">Cancel</div>
+      <div id="btnSave">Create Playlist</div>
+    </div>
+    <div class="response">
+      <h3 id="message"></h3>
+      <ul id="songs"></ul>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/community.js') }}"></script>
+<!-- Additional content specific to the homepage -->
+{% endblock %}
